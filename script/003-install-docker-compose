@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function main {
+  set -x
+
+  sudo mkdir -p /usr/local/bin
+  sudo curl -sSL -o /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-Linux-x86_64"
+  sudo chmod +x /usr/local/bin/docker-compose
+}
+
+main "$@"

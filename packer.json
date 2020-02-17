@@ -41,7 +41,7 @@
         "Name": "{{user `ami_name`}}",
         "ManagedBy": "Packer"
       },
-      "ami_description": "defn Home",
+      "ami_description": "defn Amazon Linux Base",
       "associate_public_ip_address": "true"
     }
   ],
@@ -49,10 +49,21 @@
     {
       "type": "shell",
       "scripts": [
-        "script/001-efs",
-        "script/003-sysdig",
-        "script/004-netdata",
-        "script/005-zerotier",
+        "../script/001-install-base",
+        "../script/006-add-dummy"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo reboot"],
+      "inline_shebang": "/bin/bash -e",
+      "expect_disconnect": true
+    },
+    {
+      "type": "shell",
+      "pause_before": "30s",
+      "scripts": [
+        "script/003-install-docker-compose",
         "script/999-update"
       ]
     }
