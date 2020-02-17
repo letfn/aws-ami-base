@@ -45,4 +45,4 @@ packer-build-latest:
 	env \
 		DEFN_PACKER_FILTERS_NAME="defn-base-*" \
 		DEFN_PACKER_AMI_NAME="defn-latest-$(shell date +%s)" \
-			packer build -timestamp-ui=true packer-update.json
+			packer build -timestamp-ui=true packer-latest.json
