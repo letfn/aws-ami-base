@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function main {
+  sudo yum install -y openssh-clients # for plain amazon linux
+  sudo yum install -y jq aws-cli # for basic aws ops
+  sudo yum install -y git rsync bind-utils
+  sudo yum upgrade -y
+
+  sudo amazon-linux-extras install kernel-ng
+}
+
+main "$@"

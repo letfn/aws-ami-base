@@ -49,8 +49,8 @@
     {
       "type": "shell",
       "scripts": [
-        "../script/001-install-base",
-        "../script/006-add-dummy"
+        "script/001-install-base",
+        "script/006-add-dummy"
       ]
     },
     {

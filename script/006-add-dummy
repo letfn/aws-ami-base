@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function main {
+  sudo install -d /etc/systemd/network
+
+  cat | sudo tee /etc/systemd/system/dummy.service <<EOF
+[Unit]
+Description=Dummy network interface
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/bin/bash -c "/sbin/ip link add dummy0 type dummy || true"
+ExecStart=/usr/bin/bash -c "/sbin/ip addr add 169.254.1.1/32 dev dummy0 || true"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  sudo systemctl daemon-reload
+  sudo systemctl enable dummy
+}
+
+main "$@"
