@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function main {
+  set -exfu
+
+  # dont use sudo
+  bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) --dont-wait --dont-start-it --no-updates --stable-channel
+}
+
+main "$@"

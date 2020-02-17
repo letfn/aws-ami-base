@@ -16,7 +16,7 @@
           "architecture": "x86_64"
         },
         "owners": [
-          "amazon"
+          "self"
         ],
         "most_recent": true
       },
@@ -41,8 +41,7 @@
         "Name": "{{user `ami_name`}}",
         "ManagedBy": "Packer"
       },
-      "ami_description": "defn Amazon Linux Base",
-      "encrypt_boot": "true",
+      "ami_description": "defn Home",
       "associate_public_ip_address": "true"
     }
   ],
@@ -50,6 +49,10 @@
     {
       "type": "shell",
       "scripts": [
+        "script/001-efs",
+        "script/003-sysdig",
+        "script/004-netdata",
+        "script/005-zerotier",
         "script/999-update"
       ]
     }
